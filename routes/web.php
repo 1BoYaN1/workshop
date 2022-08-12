@@ -14,22 +14,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes([
-    'verify' => true,
-]);
 
 Route::get('/', 'MainController@index')->name('main.index');
+
+Route::get('profile', 'ProfileController@edit')->name('profile.edit');
+
+Route::put('profile', 'ProfileController@update')->name('profile.update');
 
 //Route::resource('products', 'ProductController');
 
 Route::resource('carts', 'CartController')->only(['index']);
 
-Route::resource('orders', 'OrderController')->only(['create', 'store']);
+Route::resource('orders', 'OrderController')
+    ->only(['create', 'store'])
+    ->middleware(['verified']);
 
 Route::resource('products.carts', 'ProductCartController')->only(['store', 'destroy']);
 
-Route::resource('orders.payments', 'OrderPaymentController')->only(['create', 'store']);
+Route::resource('orders.payments', 'OrderPaymentController')
+    ->only(['create', 'store'])
+    ->middleware(['verified']);
 
+Auth::routes([
+    'verify' => true,
+//    'reset' => false,
+]);
 
 //
 //Route::get('products', 'ProductController@index')->name('products.index');

@@ -1,4 +1,4 @@
-@extends('layouts.app')height="500"
+@extends('layouts.app')
 
 @section('content')
 
