@@ -32,8 +32,8 @@ class ProfileController extends Controller
 
         $user->save();
 
+//        dd($request);
         if ($request->hasFile('image')){
-//            dd($request->image);
 //        dd($path = Storage::putFile('avatars', $request->file('image')));
             if ($user->image != null){
                 Storage::disk('images')->delete($user->image->path);
