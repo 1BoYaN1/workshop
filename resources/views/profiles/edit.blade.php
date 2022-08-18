@@ -66,7 +66,7 @@
                             <label class="col-md-4 col-form-label text-md-end">{{ __('Image') }}</label>
 
                             <div class="col-md-6">
-                                <input class="form-control" type="file" id="formFile">
+                                <input name="image" class="form-control" type="file" id="formFile">
                                 <label for="formFile" class="form-label"></label>
                             </div>
                         </div>
